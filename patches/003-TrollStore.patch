@@ -223,18 +223,9 @@ index 9bad064..938c030 100644
 -	UIAlertAction* openAction = [UIAlertAction actionWithTitle:@"Open" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +	UIAlertAction* openAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Open", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
  	{
- 		[self openAppPressedForRowAtIndexPath:indexPath enableJIT:NO];
+ 		[self openAppPressedForRowAtIndexPath:indexPath];
  		[self deselectRow];
-@@ -447,7 +447,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
- 
- 	if ([appInfo isDebuggable])
- 	{
--		UIAlertAction* openWithJITAction = [UIAlertAction actionWithTitle:@"Open with JIT" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-+		UIAlertAction* openWithJITAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Open with JIT", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
- 		{
- 			[self openAppPressedForRowAtIndexPath:indexPath enableJIT:YES];
- 			[self deselectRow];
-@@ -455,7 +455,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -428,7 +428,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  		[appSelectAlert addAction:openWithJITAction];
  	}
  
@@ -243,7 +234,7 @@ index 9bad064..938c030 100644
  	{
  		[self showDetailsPressedForRowAtIndexPath:indexPath];
  		[self deselectRow];
-@@ -476,21 +476,21 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -449,21 +449,21 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  		switchActionStyle = UIAlertActionStyleDefault;
  	}
  
