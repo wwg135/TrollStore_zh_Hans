@@ -716,7 +716,7 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:nil
  										get:nil
-@@ -302,7 +302,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -303,7 +303,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		[_specifiers addObject:donateSpecifier];
  
  		// Uninstall TrollStore
