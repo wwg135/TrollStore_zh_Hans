@@ -132,7 +132,7 @@ index d4eb2c0..f4b378c 100644
  void fetchLatestTrollStoreVersion(void (^completionHandler)(NSString* latestVersion))
  {
 -	github_fetchLatestVersion(@"opa334/TrollStore", completionHandler);
-+	github_fetchLatestVersion(@"sbwml/TrollStore_zh_Hans", completionHandler);
++	github_fetchLatestVersion(@"wwg135/TrollStore_zh_Hans", completionHandler);
  }
  
  void fetchLatestLdidVersion(void (^completionHandler)(NSString* latestVersion))
