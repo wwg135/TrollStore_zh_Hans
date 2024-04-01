@@ -586,32 +586,32 @@ index 61fb1e7..a4ac391 100644
  											set:nil
  											get:nil
 @@ -122,22 +122,22 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 			}
+ 		}
  
- 			PSSpecifier* signingGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
--			signingGroupSpecifier.name = @"Signing";
-+			signingGroupSpecifier.name = NSLocalizedString(@"Signing", nil);
+ 		PSSpecifier* signingGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
+-		signingGroupSpecifier.name = @"Signing";
++		signingGroupSpecifier.name = NSLocalizedString(@"Signing", nil);
  
- 			if(ldidInstalled)
+ 		if(ldidInstalled)
+ 		{
+-			[signingGroupSpecifier setProperty:@"ldid is installed and allows TrollStore to install unsigned IPA files." forKey:@"footerText"];
++			[signingGroupSpecifier setProperty:NSLocalizedString(@"ldid is installed and allows TrollStore to install unsigned IPA files.", nil) forKey:@"footerText"];
+ 		}
+ 		else
+ 		{
+-			[signingGroupSpecifier setProperty:@"In order for TrollStore to be able to install unsigned IPAs, ldid has to be installed using this button. It can't be directly included in TrollStore because of licensing issues." forKey:@"footerText"];
++			[signingGroupSpecifier setProperty:NSLocalizedString(@"In order for TrollStore to be able to install unsigned IPAs, ldid has to be installed using this button. It can't be directly included in TrollStore because of licensing issues.", nil) forKey:@"footerText"];
+ 		}
+ 
+ 		[_specifiers addObject:signingGroupSpecifier];
+ 
+ 		if(ldidInstalled)
+ 		{
+-			NSString* installedTitle = @"ldid: Installed";
++			NSString* installedTitle = NSLocalizedString(@"ldid: Installed", nil);
+ 			if(ldidVersion)
  			{
--				[signingGroupSpecifier setProperty:@"ldid is installed and allows TrollStore to install unsigned IPA files." forKey:@"footerText"];
-+				[signingGroupSpecifier setProperty:NSLocalizedString(@"ldid is installed and allows TrollStore to install unsigned IPA files.", nil) forKey:@"footerText"];
- 			}
- 			else
- 			{
--				[signingGroupSpecifier setProperty:@"In order for TrollStore to be able to install unsigned IPAs, ldid has to be installed using this button. It can't be directly included in TrollStore because of licensing issues." forKey:@"footerText"];
-+				[signingGroupSpecifier setProperty:NSLocalizedString(@"In order for TrollStore to be able to install unsigned IPAs, ldid has to be installed using this button. It can't be directly included in TrollStore because of licensing issues.", nil) forKey:@"footerText"];
- 			}
- 
- 			[_specifiers addObject:signingGroupSpecifier];
- 
- 			if(ldidInstalled)
- 			{
--				NSString* installedTitle = @"ldid: Installed";
-+				NSString* installedTitle = NSLocalizedString(@"ldid: Installed", nil);
- 				if(ldidVersion)
- 				{
- 					installedTitle = [NSString stringWithFormat:@"%@ (%@)", installedTitle, ldidVersion];
+ 				installedTitle = [NSString stringWithFormat:@"%@ (%@)", installedTitle, ldidVersion];
 @@ -156,7 +156,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
  				if(_newerLdidVersion && ![_newerLdidVersion isEqualToString:ldidVersion])
