@@ -547,7 +547,7 @@ diff --git a/TrollStore/TSSettingsListController.m b/TrollStore/TSSettingsListCo
 index 61fb1e7..a4ac391 100644
 --- a/TrollStore/TSSettingsListController.m
 +++ b/TrollStore/TSSettingsListController.m
-@@ -76,10 +76,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -63,10 +63,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		if(_newerVersion)
  		{
  			PSSpecifier* updateTrollStoreGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
@@ -560,22 +560,7 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:nil
  										get:nil
-@@ -95,11 +95,11 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 		if(!_devModeEnabled)
- 		{
- 			PSSpecifier* enableDevModeGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
--			enableDevModeGroupSpecifier.name = @"Developer Mode";
--			[enableDevModeGroupSpecifier setProperty:@"Some apps require developer mode enabled to launch. This requires a reboot to take effect." forKey:@"footerText"];
-+			enableDevModeGroupSpecifier.name = NSLocalizedString(@"Developer Mode", nil);
-+			[enableDevModeGroupSpecifier setProperty:NSLocalizedString(@"Some apps require developer mode enabled to launch. This requires a reboot to take effect.", nil) forKey:@"footerText"];
- 			[_specifiers addObject:enableDevModeGroupSpecifier];
- 
--			PSSpecifier* enableDevModeSpecifier = [PSSpecifier preferenceSpecifierNamed:@"Enable Developer Mode"
-+			PSSpecifier* enableDevModeSpecifier = [PSSpecifier preferenceSpecifierNamed:NSLocalizedString(@"Enable Developer Mode", nil)
- 										target:self
- 										set:nil
- 										get:nil
-@@ -113,11 +113,11 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -80,11 +80,11 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		}
  
  		PSSpecifier* utilitiesGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
@@ -590,7 +575,7 @@ index 61fb1e7..a4ac391 100644
  											target:self
  											set:nil
  											get:nil
-@@ -130,7 +130,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -97,7 +97,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
  		[_specifiers addObject:respringButtonSpecifier];
  
@@ -599,7 +584,7 @@ index 61fb1e7..a4ac391 100644
  											target:self
  											set:nil
  											get:nil
-@@ -156,22 +156,22 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -122,22 +122,22 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  			}
  
  			PSSpecifier* signingGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
@@ -626,7 +611,7 @@ index 61fb1e7..a4ac391 100644
  				if(ldidVersion)
  				{
  					installedTitle = [NSString stringWithFormat:@"%@ (%@)", installedTitle, ldidVersion];
-@@ -190,7 +190,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -156,7 +156,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
  				if(_newerLdidVersion && ![_newerLdidVersion isEqualToString:ldidVersion])
  				{
@@ -635,7 +620,7 @@ index 61fb1e7..a4ac391 100644
  					PSSpecifier* ldidUpdateSpecifier = [PSSpecifier preferenceSpecifierNamed:updateTitle
  												target:self
  												set:nil
-@@ -206,7 +206,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -172,7 +172,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  			}
  			else
  			{
@@ -644,8 +629,8 @@ index 61fb1e7..a4ac391 100644
  												target:self
  												set:nil
  												get:nil
-@@ -221,13 +221,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 		//}
+@@ -186,13 +186,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+ 		}
  
  		PSSpecifier* persistenceGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
 -		persistenceGroupSpecifier.name = @"Persistence";
@@ -661,7 +646,7 @@ index 61fb1e7..a4ac391 100644
  											target:self
  											set:nil
  											get:nil
-@@ -245,8 +245,8 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -210,8 +210,8 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  			{
  				NSString* appName = [persistenceApp localizedName];
  
@@ -672,7 +657,7 @@ index 61fb1e7..a4ac391 100644
  												target:self
  												set:nil
  												get:nil
-@@ -257,7 +257,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -222,7 +222,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  				installedPersistenceHelperSpecifier.identifier = @"persistenceHelperInstalled";
  				[_specifiers addObject:installedPersistenceHelperSpecifier];
  
@@ -681,7 +666,7 @@ index 61fb1e7..a4ac391 100644
  												target:self
  												set:nil
  												get:nil
-@@ -273,9 +273,9 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -238,9 +238,9 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  			}
  			else
  			{
@@ -693,7 +678,7 @@ index 61fb1e7..a4ac391 100644
  												target:self
  												set:nil
  												get:nil
-@@ -290,12 +290,12 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -255,12 +255,12 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		}
  
  		PSSpecifier* installationSettingsGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
@@ -709,7 +694,7 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:@selector(setURLSchemeEnabled:forSpecifier:)
  										get:@selector(getURLSchemeEnabledForSpecifier:)
-@@ -305,7 +305,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -270,7 +270,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
  		[_specifiers addObject:URLSchemeToggle];
  
@@ -718,11 +703,11 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:@selector(setPreferenceValue:specifier:)
  										get:@selector(readPreferenceValue:)
-@@ -323,10 +323,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -288,10 +288,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		[_specifiers addObject:installAlertConfigurationSpecifier];
  
  		PSSpecifier* otherGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
--		[otherGroupSpecifier setProperty:[NSString stringWithFormat:@"TrollStore %@\n\n© 2022-2024 Lars Fröder (opa334)\n\nTrollStore is NOT for piracy!\n\nCredits:\nGoogle TAG, @alfiecg_dev: CoreTrust bug\n@lunotech11, @SerenaKit, @tylinux, @TheRealClarity, @dhinakg, @khanhduytran0: Various contributions\n@ProcursusTeam: uicache, ldid\n@cstar_ow: uicache\n@saurik: ldid", [self getTrollStoreVersion]] forKey:@"footerText"];
+-		[otherGroupSpecifier setProperty:[NSString stringWithFormat:@"TrollStore %@\n\n© 2022 Lars Fröder (opa334)\n\nTrollStore is NOT for piracy!\n\nCredits:\n@LinusHenze: CoreTrust bug\n@zhuowei: CoreTrust bug writeup and cert\n@lunotech11, @SerenaKit, @tylinux: Various contributions\n@ProcursusTeam: uicache and ldid build\n@cstar_ow: uicache\n@saurik: ldid", [self getTrollStoreVersion]] forKey:@"footerText"];
 +		[otherGroupSpecifier setProperty:[NSString stringWithFormat:NSLocalizedString(@"TrollStore %@\n\n© 2022-2024 Lars Fröder (opa334)\n\nTrollStore is NOT for piracy!\n\nCredits:\nGoogle TAG, @alfiecg_dev: CoreTrust bug\n@lunotech11, @SerenaKit, @tylinux, @TheRealClarity, @dhinakg, @khanhduytran0: Various contributions\n@ProcursusTeam: uicache, ldid\n@cstar_ow: uicache\n@saurik: ldid", nil), [self getTrollStoreVersion]] forKey:@"footerText"];
  		[_specifiers addObject:otherGroupSpecifier];
  
@@ -731,16 +716,7 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:nil
  										get:nil
-@@ -337,7 +337,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 		[advancedLinkSpecifier setProperty:@YES forKey:@"enabled"];
- 		[_specifiers addObject:advancedLinkSpecifier];
- 
--		PSSpecifier* donateSpecifier = [PSSpecifier preferenceSpecifierNamed:@"Donate"
-+		PSSpecifier* donateSpecifier = [PSSpecifier preferenceSpecifierNamed:NSLocalizedString(@"Donate", nil)
- 										target:self
- 										set:nil
- 										get:nil
-@@ -349,7 +349,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -302,7 +302,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		[_specifiers addObject:donateSpecifier];
  
  		// Uninstall TrollStore
@@ -749,7 +725,7 @@ index 61fb1e7..a4ac391 100644
  										target:self
  										set:nil
  										get:nil
-@@ -375,7 +375,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -329,7 +329,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		[_specifiers addObject:doTheDashSpecifier];*/
  	}
  
@@ -758,7 +734,7 @@ index 61fb1e7..a4ac391 100644
  	return _specifiers;
  }
  
-@@ -386,7 +386,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -340,7 +340,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
  - (NSArray*)installationConfirmationNames
  {
@@ -767,40 +743,7 @@ index 61fb1e7..a4ac391 100644
  }
  
  - (void)respringButtonPressed
-@@ -404,17 +404,17 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 	int ret = spawnRoot(rootHelperPath(), @[@"arm-dev-mode"], nil, nil);
- 
- 	if (ret == 0) {
--		UIAlertController* rebootNotification = [UIAlertController alertControllerWithTitle:@"Reboot Required"
--			message:@"After rebooting, select \"Turn On\" to enable developer mode."
-+		UIAlertController* rebootNotification = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Reboot Required", nil)
-+			message:NSLocalizedString(@"After rebooting, select \"Turn On\" to enable developer mode.", nil)
- 			preferredStyle:UIAlertControllerStyleAlert
- 		];
--		UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:^(UIAlertAction* action)
-+		UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction* action)
- 		{
- 			[self reloadSpecifiers];
- 		}];
- 		[rebootNotification addAction:closeAction];
- 
--		UIAlertAction* rebootAction = [UIAlertAction actionWithTitle:@"Reboot Now" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-+		UIAlertAction* rebootAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Reboot Now", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
- 		{
- 			spawnRoot(rootHelperPath(), @[@"reboot"], nil, nil);
- 		}];
-@@ -422,8 +422,8 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 
- 		[TSPresentationDelegate presentViewController:rebootNotification animated:YES completion:nil];
- 	} else {
--		UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Error %d", ret] message:@"Failed to enable developer mode." preferredStyle:UIAlertControllerStyleAlert];
--		UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil];
-+		UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Error %d", nil), ret] message:NSLocalizedString(@"Failed to enable developer mode.", nil) preferredStyle:UIAlertControllerStyleAlert];
-+		UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil];
- 		[errorAlert addAction:closeAction];
- 
- 		[TSPresentationDelegate presentViewController:errorAlert animated:YES completion:nil];
-@@ -448,7 +448,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -371,7 +371,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		}
  	}];
  
@@ -809,7 +752,7 @@ index 61fb1e7..a4ac391 100644
  	for(LSApplicationProxy* appProxy in appCandidates)
  	{
  		UIAlertAction* installAction = [UIAlertAction actionWithTitle:[appProxy localizedName] style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-@@ -465,7 +465,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -388,7 +388,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  	selectAppAlert.popoverPresentationController.sourceView = tableView;
  	selectAppAlert.popoverPresentationController.sourceRect = [tableView rectForRowAtIndexPath:indexPath];
  
@@ -818,7 +761,7 @@ index 61fb1e7..a4ac391 100644
  	[selectAppAlert addAction:cancelAction];
  
  	[TSPresentationDelegate presentViewController:selectAppAlert animated:YES completion:nil];
-@@ -483,14 +483,14 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -406,14 +406,14 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  	NSString* newStateString = [newValue boolValue] ? @"enable" : @"disable";
  	spawnRoot(rootHelperPath(), @[@"url-scheme", newStateString], nil, nil);
  
