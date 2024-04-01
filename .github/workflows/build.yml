@@ -24,6 +24,11 @@ jobs:
       run: |
         brew install libarchive
 
+    - name: Set environment variables
+      run: |
+        echo 'export LDFLAGS="-L/usr/local/opt/libarchive/lib"' >> $GITHUB_ENV
+        echo 'export CPPFLAGS="-I/usr/local/opt/libarchive/include"' >> $GITHUB_ENV
+
     - name: Patch TrollStore
       run: |
         git clone https://github.com/opa334/TrollStore build
