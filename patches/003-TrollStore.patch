@@ -334,7 +334,7 @@ index 03c3e28..709da2f 100644
  		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
  		{
 			// Install IPA
-@@ -34,20 +34,20 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -34,32 +34,32 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
 				{
 					if(ret != 0)
 					{
@@ -357,7 +357,8 @@ index 03c3e28..709da2f 100644
 								[self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
 							}];
 							[errorAlert addAction:forceInstallAction];
-@@ -56,10 +56,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+						}
+						else
 						{
 -							UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:@"Copy Debug Log" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +       						UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Copy Debug Log", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
