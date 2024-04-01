@@ -357,7 +357,7 @@ index 03c3e28..709da2f 100644
 								[self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
 							}];
 							[errorAlert addAction:forceInstallAction];
-@@ -54,10 +54,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+@@ -54,10 +54,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);    
  						}
  						else
  						{
@@ -368,7 +368,6 @@ index 03c3e28..709da2f 100644
  								pasteboard.string = log;
  							}];
  							[errorAlert addAction:copyLogAction];
- 						}
 @@ -109,13 +109,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  				UIAlertController* installAlert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
  				installAlert.attributedTitle = [appInfo detailedInfoTitle];
