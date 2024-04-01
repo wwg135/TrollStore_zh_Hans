@@ -335,27 +335,27 @@ index 03c3e28..709da2f 100644
  		{
  			// Install IPA
 @@ -35,19 +35,19 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 					if(ret != 0)
+					if(ret != 0)
  					{
  						UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Install Error %d", ret] message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
 -						UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +						UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
  						{
-          if(ret == 171)
-          {
- 							    if(completionBlock) completionBlock(NO, error);
-          }
+                                                          if(ret == 171)
+                                                          {
+ 						                if(completionBlock) completionBlock(NO, error);
+                                                          }
  						}];
  						[errorAlert addAction:closeAction];
 
-       if(ret == 171)
-       {
--						  UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:@"Force Installation" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-+						  UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Force Installation", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
- 						  {
- 							  [self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
- 						  }];
-         [errorAlert addAction:forceInstallAction];
+                                                if(ret == 171)
+                                                {
+-						          UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:@"Force Installation" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
++						          UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Force Installation", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
+ 						          {
+ 							          [self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
+ 						          }];
+                                                         [errorAlert addAction:forceInstallAction];
 @@ -54,7 +54,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  						}
  					 else
