@@ -357,9 +357,7 @@ index 03c3e28..709da2f 100644
 								[self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
 							}];
 							[errorAlert addAction:forceInstallAction];
-@@ -54,12 +54,12 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
-						}
-						else
+@@ -56,10 +56,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
 						{
 -							UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:@"Copy Debug Log" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +       						UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Copy Debug Log", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
