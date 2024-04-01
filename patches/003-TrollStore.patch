@@ -64,7 +64,7 @@ diff --git a/TrollStore/TSAppTableViewController.m b/TrollStore/TSAppTableViewCo
 index 9bad064..938c030 100644
 --- a/TrollStore/TSAppTableViewController.m
 +++ b/TrollStore/TSAppTableViewController.m
-@@ -117,7 +117,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -116,7 +116,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  
  - (void)_setUpNavigationBar
  {
@@ -73,7 +73,7 @@ index 9bad064..938c030 100644
  	{
  		dispatch_async(dispatch_get_main_queue(), ^
  		{
-@@ -132,17 +132,17 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -131,17 +131,17 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  		});
  	}];
  
@@ -94,7 +94,7 @@ index 9bad064..938c030 100644
  			{
  				NSString* URLString = installURLController.textFields.firstObject.text;
  				NSURL* remoteURL = [NSURL URLWithString:URLString];
-@@ -151,7 +151,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -150,7 +150,7 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  			}];
  			[installURLController addAction:installAction];
  
@@ -103,7 +103,7 @@ index 9bad064..938c030 100644
  			[installURLController addAction:cancelAction];
  
  			[TSPresentationDelegate presentViewController:installURLController animated:YES completion:nil];
-@@ -202,12 +202,12 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
+@@ -201,12 +201,12 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  		NSString* failMessage = @"";
  		if([[appInfo registrationState] isEqualToString:@"User"])
  		{
