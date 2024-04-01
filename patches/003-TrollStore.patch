@@ -614,22 +614,22 @@ index 61fb1e7..a4ac391 100644
  				installedTitle = [NSString stringWithFormat:@"%@ (%@)", installedTitle, ldidVersion];
 @@ -156,7 +156,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  
- 				if(_newerLdidVersion && ![_newerLdidVersion isEqualToString:ldidVersion])
- 				{
--					NSString* updateTitle = [NSString stringWithFormat:@"Update to %@", _newerLdidVersion];
-+					NSString* updateTitle = [NSString stringWithFormat:NSLocalizedString(@"Update to %@", nil), _newerLdidVersion];
- 					PSSpecifier* ldidUpdateSpecifier = [PSSpecifier preferenceSpecifierNamed:updateTitle
- 												target:self
- 												set:nil
-@@ -172,7 +172,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- 			}
- 			else
+ 			if(_newerLdidVersion && ![_newerLdidVersion isEqualToString:ldidVersion])
  			{
--				PSSpecifier* installLdidSpecifier = [PSSpecifier preferenceSpecifierNamed:@"Install ldid"
-+				PSSpecifier* installLdidSpecifier = [PSSpecifier preferenceSpecifierNamed:NSLocalizedString(@"Install ldid", nil)
- 												target:self
- 												set:nil
- 												get:nil
+-				NSString* updateTitle = [NSString stringWithFormat:@"Update to %@", _newerLdidVersion];
++				NSString* updateTitle = [NSString stringWithFormat:NSLocalizedString(@"Update to %@", nil), _newerLdidVersion];
+ 				PSSpecifier* ldidUpdateSpecifier = [PSSpecifier preferenceSpecifierNamed:updateTitle
+ 											target:self
+ 											set:nil
+@@ -172,7 +172,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+ 		}
+ 		else
+ 		{
+-			PSSpecifier* installLdidSpecifier = [PSSpecifier preferenceSpecifierNamed:@"Install ldid"
++			PSSpecifier* installLdidSpecifier = [PSSpecifier preferenceSpecifierNamed:NSLocalizedString(@"Install ldid", nil)
+ 											target:self
+ 											set:nil
+ 											get:nil
 @@ -186,13 +186,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  		}
  
