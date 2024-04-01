@@ -334,10 +334,7 @@ index 03c3e28..709da2f 100644
  		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
  		{
 			// Install IPA
-@@ -31,23 +31,23 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
-				[TSPresentationDelegate stopActivityWithCompletion:^
+@@ -31,20 +31,20 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
 				{
 					if(ret != 0)
 					{
