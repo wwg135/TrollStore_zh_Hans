@@ -1,6 +1,8 @@
-name: Build
-
+name: build_Release
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   repository_dispatch:
     types: [build]
@@ -54,12 +56,12 @@ jobs:
         make
 
     - name: Create release
-      uses: sbwml/release-action@main
+      uses: wwg135/release-action@main
       with:
         name: ${{ env.VERSION }}
         allowUpdates: true
         tag: ${{ env.VERSION }}
         commit: main
         replacesArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
         artifacts: ${{ env.WORKDIR }}/_build/TrollStore.tar
