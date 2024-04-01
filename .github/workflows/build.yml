@@ -1,6 +1,8 @@
-name: Build
-
+name: build_Release
 on:
+  push:
+    branches:
+      - test
   workflow_dispatch:
   repository_dispatch:
     types: [build]
@@ -24,9 +26,9 @@ jobs:
 
     - name: Patch TrollStore
       run: |
-        git clone https://github.com/opa334/TrollStore build --recurse-submodules
+        git clone https://github.com/opa334/TrollStore build
         cd build
-        git checkout $(git describe --tags --abbrev=0)
+        git checkout tags/1.5.1
 
         # Apply patches
         patch -p1 < ../patches/001-Shared.patch
@@ -41,7 +43,7 @@ jobs:
         fi
 
         echo WORKDIR="$(pwd)" >> "$GITHUB_ENV"
-        echo VERSION="$(git describe --tags --abbrev=0)" >> "$GITHUB_ENV"
+        echo VERSION="1.5.1" >> "$GITHUB_ENV"
         # drop build ipa by default
         sed -i '' 's/build_installer15 build_installer64e//g' Makefile
 
@@ -61,5 +63,5 @@ jobs:
         tag: ${{ env.VERSION }}
         commit: main
         replacesArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
         artifacts: ${{ env.WORKDIR }}/_build/TrollStore.tar
