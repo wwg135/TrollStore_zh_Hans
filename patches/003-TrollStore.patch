@@ -326,8 +326,8 @@ index 03c3e28..709da2f 100644
 --- a/TrollStore/TSInstallationController.m
 +++ b/TrollStore/TSInstallationController.m
 @@ -13,63 +13,63 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
-{
-	dispatch_async(dispatch_get_main_queue(), ^
+ {
+ 	dispatch_async(dispatch_get_main_queue(), ^
 	{
 -		[TSPresentationDelegate startActivity:@"Installing"];
 +		[TSPresentationDelegate startActivity:NSLocalizedString(@"Installing", nil)];
@@ -388,12 +388,6 @@ index 03c3e28..709da2f 100644
 					if(ret != 171)
 					{
 						if(completionBlock) completionBlock((BOOL)error, error);
-					}
-				}];
-			});
-		});
-	});
-}
 @@ -109,13 +109,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  				UIAlertController* installAlert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
  				installAlert.attributedTitle = [appInfo detailedInfoTitle];
