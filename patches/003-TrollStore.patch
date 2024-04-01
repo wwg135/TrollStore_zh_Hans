@@ -119,17 +119,6 @@ index 9bad064..938c030 100644
  
  		[didFailController addAction:cancelAction];
  		[TSPresentationDelegate presentViewController:didFailController animated:YES completion:nil];
-@@ -217,8 +217,8 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
- 		int ret = [appsManager enableJITForBundleID:appId];
- 		if (ret != 0)
- 		{
--			UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Error enabling JIT: trollstorehelper returned %d", ret] preferredStyle:UIAlertControllerStyleAlert];
--			UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil];
-+			UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Error enabling JIT: trollstorehelper returned %d", nil), ret] preferredStyle:UIAlertControllerStyleAlert];
-+			UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil];
- 			[errorAlert addAction:closeAction];
- 			[TSPresentationDelegate presentViewController:errorAlert animated:YES completion:nil];
- 		}
 @@ -227,15 +227,15 @@ UIImage* imageWithSize(UIImage* image, CGSize size)
  				detailsAlert.attributedTitle = [appInfo detailedInfoTitle];
  				detailsAlert.attributedMessage = [appInfo detailedInfoDescription];
