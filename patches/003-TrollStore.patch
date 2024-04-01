@@ -325,38 +325,51 @@ diff --git a/TrollStore/TSInstallationController.m b/TrollStore/TSInstallationCo
 index 03c3e28..709da2f 100644
 --- a/TrollStore/TSInstallationController.m
 +++ b/TrollStore/TSInstallationController.m
-@@ -13,7 +13,7 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
- {
- 	dispatch_async(dispatch_get_main_queue(), ^
+@@ -13,63 +13,63 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+{
+	dispatch_async(dispatch_get_main_queue(), ^
 	{
 -		[TSPresentationDelegate startActivity:@"Installing"];
 +		[TSPresentationDelegate startActivity:NSLocalizedString(@"Installing", nil)];
  		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
  		{
- 			// Install IPA
-@@ -35,19 +35,19 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+			// Install IPA
+			NSString* log;
+			int ret = [[TSApplicationsManager sharedInstance] installIpa:pathToIPA force:force log:&log];
+
+			NSError* error;
+			if(ret != 0)
+			{
+				error = [[TSApplicationsManager sharedInstance] errorForCode:ret];
+			}
+
+			NSLog(@"installed app! ret:%d, error: %@", ret, error);
+
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				[TSPresentationDelegate stopActivityWithCompletion:^
+				{
 					if(ret != 0)
- 					{
- 						UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Install Error %d", ret] message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+					{
+						UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Install Error %d", ret] message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
 -						UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +						UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
- 						{
-                                                          if(ret == 171)
-                                                          {
- 						                if(completionBlock) completionBlock(NO, error);
-                                                          }
- 						}];
- 						[errorAlert addAction:closeAction];
+						{
+							if(ret == 171)
+							{
+								if(completionBlock) completionBlock(NO, error);
+							}
+						}];
+						[errorAlert addAction:closeAction];
 
-                                                if(ret == 171)
-                                                {
--						          UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:@"Force Installation" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-+						          UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Force Installation", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
- 						          {
- 							          [self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
- 						          }];
-                                                         [errorAlert addAction:forceInstallAction];
-@@ -54,10 +54,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
+						if(ret == 171)
+						{
+-							UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:@"Force Installation" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
++						        UIAlertAction* forceInstallAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Force Installation", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
+							{
+								[self handleAppInstallFromFile:pathToIPA forceInstall:YES completion:completionBlock];
+							}];
+							[errorAlert addAction:forceInstallAction];
 						}
 						else
 						{
@@ -368,6 +381,19 @@ index 03c3e28..709da2f 100644
 							}];
 							[errorAlert addAction:copyLogAction];
 						}
+
+						[TSPresentationDelegate presentViewController:errorAlert animated:YES completion:nil];
+					}
+
+					if(ret != 171)
+					{
+						if(completionBlock) completionBlock((BOOL)error, error);
+					}
+				}];
+			});
+		});
+	});
+}
 @@ -109,13 +109,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  				UIAlertController* installAlert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
  				installAlert.attributedTitle = [appInfo detailedInfoTitle];
