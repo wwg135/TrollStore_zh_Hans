@@ -460,7 +460,7 @@ diff --git a/TrollStore/TSSceneDelegate.m b/TrollStore/TSSceneDelegate.m
 index b5090fa..366cdc2 100644
 --- a/TrollStore/TSSceneDelegate.m
 +++ b/TrollStore/TSSceneDelegate.m
-@@ -40,10 +40,10 @@
+@@ -39,10 +39,10 @@
  				else if([url.pathExtension.lowercaseString isEqualToString:@"tar"])
  				{
  					// Update TrollStore itself
@@ -473,29 +473,6 @@ index b5090fa..366cdc2 100644
  				}
  			}
  			else if([url.scheme isEqualToString:@"apple-magnifier"])
-@@ -106,9 +106,9 @@
- 		NSString* failMessage = @"";
- 		// we don't have TSAppInfo here so we cannot check the registration state
- 
--		NSString* failTitle = [NSString stringWithFormat:@"Failed to open %@", appId];
-+		NSString* failTitle = [NSString stringWithFormat:NSLocalizedString(@"Failed to open %@", nil), appId];
- 		UIAlertController* didFailController = [UIAlertController alertControllerWithTitle:failTitle message:failMessage preferredStyle:UIAlertControllerStyleAlert];
--		UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-+		UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
- 
- 		[didFailController addAction:cancelAction];
- 		[TSPresentationDelegate presentViewController:didFailController animated:YES completion:nil];
-@@ -118,8 +118,8 @@
- 		int ret = [appsManager enableJITForBundleID:appId];
- 		if (ret != 0)
- 		{
--			UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Error enabling JIT: trollstorehelper returned %d", ret] preferredStyle:UIAlertControllerStyleAlert];
--			UIAlertAction* closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil];
-+			UIAlertController* errorAlert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Error enabling JIT: trollstorehelper returned %d", nil), ret] preferredStyle:UIAlertControllerStyleAlert];
-+			UIAlertAction* closeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil];
- 			[errorAlert addAction:closeAction];
- 			[TSPresentationDelegate presentViewController:errorAlert animated:YES completion:nil];
- 		}
 diff --git a/TrollStore/TSSettingsAdvancedListController.m b/TrollStore/TSSettingsAdvancedListController.m
 index 8bdc1b9..26a26af 100644
 --- a/TrollStore/TSSettingsAdvancedListController.m
