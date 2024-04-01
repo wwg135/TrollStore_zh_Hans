@@ -358,17 +358,17 @@ index 03c3e28..709da2f 100644
 							}];
 							[errorAlert addAction:forceInstallAction];
 @@ -54,10 +54,10 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
-						}
-						else
-						{
+ 						}
+ 						else
+ 						{
 -							UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:@"Copy Debug Log" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
 +       						UIAlertAction* copyLogAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Copy Debug Log", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-							{
-								UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
-								pasteboard.string = log;
-							}];
-							[errorAlert addAction:copyLogAction];
-						}
+ 							{
+ 								UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+ 								pasteboard.string = log;
+ 							}];
+ 							[errorAlert addAction:copyLogAction];
+ 						}
 @@ -109,13 +109,13 @@ extern NSUserDefaults* trollStoreUserDefaults(void);
  				UIAlertController* installAlert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
  				installAlert.attributedTitle = [appInfo detailedInfoTitle];
