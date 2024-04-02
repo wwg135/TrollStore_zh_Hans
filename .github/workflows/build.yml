@@ -17,11 +17,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Pre theos
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos > theos
-        sed -i '' 's/get_sdks$//g' theos
-        bash theos
+    - name: Install Theos
+      uses: Randomblock1/theos-action@v1
 
     - name: Patch TrollStore
       run: |
