@@ -49,12 +49,11 @@ jobs:
     - name: Install libarchive
       run: |
         brew install libarchive
-        echo 'export LIBRARY_PATH="/usr/local/lib"' >> $GITHUB_ENV
-        echo 'export C_INCLUDE_PATH="/usr/local/include"' >> $GITHUB_ENV
 
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
       run: |
+        export LIBRARY_PATH="/usr/local/lib"
         export C_INCLUDE_PATH="/usr/local/include"
         make
 
