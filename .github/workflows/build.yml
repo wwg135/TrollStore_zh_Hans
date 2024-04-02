@@ -53,8 +53,8 @@ jobs:
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
       run: |
-        export LIBRARY_PATH="/usr/local/lib"
-        export C_INCLUDE_PATH="/usr/local/include"
+        export LDFLAGS="-L/usr/local/opt/libarchive/lib"
+        export CPPFLAGS="-I/usr/local/opt/libarchive/include"
         make
 
     - name: Create release
