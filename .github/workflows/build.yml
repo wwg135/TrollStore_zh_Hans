@@ -55,6 +55,7 @@ jobs:
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
       run: |
+        export C_INCLUDE_PATH="/usr/local/include"
         make
 
     - name: Create release
