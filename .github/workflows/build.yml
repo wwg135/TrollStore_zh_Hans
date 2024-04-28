@@ -22,11 +22,15 @@ jobs:
     - name: Install Theos
       uses: Randomblock1/theos-action@v1.4
 
+    - name: Install libarchive
+      run: |
+        brew install libarchive
+
     - name: Patch TrollStore
       run: |
-        git clone https://github.com/wwg135/TrollStore build
+        git clone https://github.com/wwg135/TrollStore build --recurse-submodules
         cd build
-        git checkout main
+        git checkout $(git describe --tags --abbrev=0)
 
         # Apply patches
         patch -p1 < ../patches/001-Shared.patch
@@ -47,14 +51,6 @@ jobs:
 
         # Copy Localizable to Resources
         cp -a ../TrollStore/* TrollStore/Resources/
-
-    - name: Install libarchive
-      run: |
-        brew install libarchive
-        echo 'export PATH="/usr/local/opt/libarchive/bin:$PATH"' >> /Users/runner/.bash_profile
-        export LDFLAGS="-L/usr/local/opt/libarchive/lib"
-        export CPPFLAGS="-I/usr/local/opt/libarchive/include"
-        export PKG_CONFIG_PATH="/usr/local/opt/libarchive/lib/pkgconfig"
 
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
