@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4.1.4
+      with:
+          submodules: recursive
 
     - name: Install Theos
       uses: Randomblock1/theos-action@v1.4
@@ -47,8 +49,8 @@ jobs:
         cp -a ../TrollStore/* TrollStore/Resources/
 
     - name: Install libarchive
-      run: |
-        brew install libarchive
+        run: |
+          brew install libarchive
 
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
@@ -57,13 +59,10 @@ jobs:
         export CPPFLAGS="-I/usr/local/opt/libarchive/include"
         make
 
-    - name: Create release
-      uses: sbwml/release-action@v1.13.0
-      with:
-        name: ${{ env.VERSION }}
-        allowUpdates: true
-        tag: ${{ env.VERSION }}
-        commit: main
-        replacesArtifacts: true
-        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-        artifacts: ${{ env.WORKDIR }}/_build/TrollStore.tar
+    - name: Upload Artifact
+        id: dopamine-latest-upload
+        uses: actions/upload-artifact@v4.3.2
+        with:
+          name: Dopamine
+          path: |
+            ${{ env.WORKDIR }}/_build/TrollStore.tar
