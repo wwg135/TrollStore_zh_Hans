@@ -49,8 +49,8 @@ jobs:
         cp -a ../TrollStore/* TrollStore/Resources/
 
     - name: Install libarchive
-        run: |
-          brew install libarchive
+      run: |
+        brew install libarchive
 
     - name: Build TrollStore
       working-directory: ${{ env.WORKDIR }}
