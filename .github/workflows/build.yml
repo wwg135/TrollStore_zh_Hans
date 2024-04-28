@@ -11,11 +11,11 @@ jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
     name: Build with Theos
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.1.4
 
     - name: Install Theos
       uses: Randomblock1/theos-action@v1.4
@@ -58,7 +58,7 @@ jobs:
         make
 
     - name: Create release
-      uses: sbwml/release-action@main
+      uses: sbwml/release-action@v1.13.0
       with:
         name: ${{ env.VERSION }}
         allowUpdates: true
