@@ -57,6 +57,7 @@ jobs:
         export PKG_CONFIG_PATH="/usr/local/opt/libarchive/lib/pkgconfig"
 
     - name: Build TrollStore
+      working-directory: ${{ env.WORKDIR }}
       run: |
         make
 
