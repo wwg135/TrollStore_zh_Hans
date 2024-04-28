@@ -51,12 +51,13 @@ jobs:
     - name: Install libarchive
       run: |
         brew install libarchive
-
-    - name: Build TrollStore
-      working-directory: ${{ env.WORKDIR }}
-      run: |
+        echo 'export PATH="/usr/local/opt/libarchive/bin:$PATH"' >> /Users/runner/.bash_profile
         export LDFLAGS="-L/usr/local/opt/libarchive/lib"
         export CPPFLAGS="-I/usr/local/opt/libarchive/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/libarchive/lib/pkgconfig"
+
+    - name: Build TrollStore
+      run: |
         make
 
     - name: Upload Artifact
