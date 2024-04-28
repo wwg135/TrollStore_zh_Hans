@@ -60,9 +60,9 @@ jobs:
         make
 
     - name: Upload Artifact
-        id: dopamine-latest-upload
-        uses: actions/upload-artifact@v4.3.2
-        with:
-          name: Dopamine
-          path: |
-            ${{ env.WORKDIR }}/_build/TrollStore.tar
+      id: dopamine-latest-upload
+      uses: actions/upload-artifact@v4.3.2
+      with:
+        name: Dopamine
+        path: |
+          ${{ env.WORKDIR }}/_build/TrollStore.tar
