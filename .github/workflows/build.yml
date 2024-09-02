@@ -28,7 +28,7 @@ jobs:
 
     - name: Patch TrollStore
       run: |
-        git clone https://github.com/wwg135/TrollStore build --recurse-submodules
+        git clone https://github.com/opa334/TrollStore build --recurse-submodules
         cd build
         git checkout $(git describe --tags --abbrev=0)
 
